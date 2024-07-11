@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ArrayList Example</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>ArrayList Example</h1>
+<table id="resultTable">
+    <thead>
+    <tr>
+        <th>Operation</th>
+        <th>Element</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script>
+    let list = [];
+
+    function addElement(element) {
+        list.push(element);
+        addRowToTable("Add", element, "Success");
+    }
+
+    function containsElement(element) {
+        let result = list.includes(element);
+        addRowToTable("Contains", element, result.toString());
+    }
+
+    function removeElement(element) {
+        let index = list.indexOf(element);
+        if (index !== -1) {
+            list.splice(index, 1);
+            addRowToTable("Remove", element, "Success");
+        }
+    }
+
+    function printList() {
+        addRowToTable("Print", "-", list.toString());
+    }
+
+    function addRowToTable(operation, element, result) {
+        let table = document.getElementById("resultTable");
+        let row = table.insertRow();
+        row.insertCell(0).textContent = operation;
+        row.insertCell(1).textContent = element;
+        row.insertCell(2).textContent = result;
+    }
+
+    addElement(1);
+    addElement(10);
+    addElement(113);
+    addElement(5);
+    addElement("hello");
+    addElement("world");
+    printList();
+    containsElement(113);
+    containsElement("goodbye");
+    containsElement("hello");
+    removeElement("hello");
+    removeElement("world");
+    printList();
+</script>
+</body>
+</html><!DOCTYPE html>
+</html>
